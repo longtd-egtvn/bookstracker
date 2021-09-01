@@ -1,42 +1,52 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'auth/firebase_user_provider.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import 'package:bookstracker/login_page/login_page_widget.dart';
+import 'package:bookstracker/home_page/home_page_widget.dart';
+import 'flutter_flow/flutter_flow_theme.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Stream<BookstrackerFirebaseUser> userStream;
+  BookstrackerFirebaseUser initialUser;
+
+  @override
+  void initState() {
+    super.initState();
+    userStream = bookstrackerFirebaseUserStream()
+      ..listen((user) => initialUser ?? setState(() => initialUser = user));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  const MyHomePage({@required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
-      ),
+      title: 'bookstracker',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: initialUser == null
+          ? const Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.primaryColor,
+                ),
+              ),
+            )
+          : currentUser.loggedIn
+              ? HomePageWidget()
+              : LoginPageWidget(),
     );
   }
 }

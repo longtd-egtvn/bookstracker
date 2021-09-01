@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "561645712215",
+    "project_id": "bookstracker-9a75c",
+    "storage_bucket": "bookstracker-9a75c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561645712215:android:d4de8194078af6145c4412",
+        "android_client_info": {
+          "package_name": "vn.egt.bookstracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561645712215-vcb20r1j6t1p58p9g8prf7ov86a4pi5p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc5BW0haORTr-A0kich8hLcJPXD-0OwTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561645712215-vcb20r1j6t1p58p9g8prf7ov86a4pi5p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "561645712215-dhj1e92k4kvqmqj95kbc6uo06cvqpn49.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.egt.bookstracker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
